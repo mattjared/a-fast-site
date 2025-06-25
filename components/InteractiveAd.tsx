@@ -101,7 +101,7 @@ export function InteractiveAd() {
   return (
     <div className="bg-gradient-to-b from-slate-900 via-blue-900/20 to-slate-900 rounded-3xl overflow-hidden mb-16 relative">
       <div className="relative h-[600px] overflow-hidden">
-        <img
+        <Image
           src={galleryImages[0].src}
           alt={galleryImages[0].alt}
           width={galleryImages[0].width}
@@ -190,7 +190,7 @@ export function InteractiveAd() {
               }`}
             >
               <div className={`relative ${index === 0 ? "h-80 lg:h-full" : "h-48"}`}>
-                <img
+                <Image
                   src={image.src}
                   alt={image.alt}
                   width={image.width}

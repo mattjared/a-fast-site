@@ -14,6 +14,16 @@ const nextConfig = {
         pathname: "/**",
       },
       {
+        protocol: "https",
+        hostname: "imgur.com",
+        pathname: "/**",
+      },
+      {
+        protocol: "http",
+        hostname: "i.imgur.com",
+        pathname: "/**",
+      },
+      {
         protocol: 'https',
         hostname: 'upload.wikimedia.org',
         pathname: '/wikipedia/**',
