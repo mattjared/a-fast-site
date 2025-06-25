@@ -5,7 +5,6 @@ import { MapPin, Satellite, Zap } from "lucide-react"
 import { Metric } from "./Metric"
 import { CityData, ISSData } from "@/types/types"
 import { useEffect, useState } from "react"
-import { getISSData } from "@/lib/actions"
 
 export function ISSClient({ city }: { city: CityData }) {
   const [issData, setIssData] = useState<ISSData | null>(null)

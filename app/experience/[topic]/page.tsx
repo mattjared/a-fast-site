@@ -4,10 +4,12 @@ import { MAJOR_CITIES } from "@/lib/cities"
 // import { WeatherServer } from "@/components/WeatherServer"
 import { CityData } from "@/types/types"
 import { ISS } from "@/components/ISS"
-import { getCityWiki, getISSData, getWeather } from "@/lib/actions"
-import { WikiCard } from "@/components/WikiCard"
-// import { WikiCardServer } from "@/components/WikiCardServer"
-import { WeatherClient } from "@/components/WeatherClient"
+import { getISSData, getWeather } from "@/lib/actions"
+// import { WikiCard } from "@/components/WikiCard"
+import { WikiCardServer } from "@/components/WikiCardServer"
+// import { WeatherClient } from "@/components/WeatherClient"
+import { WeatherServer } from "@/components/WeatherServer"
+import { ISSClient } from "@/components/ISSClient"
 
 export default async function ExperiencePage({
   params,
@@ -21,7 +23,7 @@ export default async function ExperiencePage({
   if (!cityInfo) notFound()
 
   // get the city wiki, iss, and weather
-  const [cityWiki, iss, weather] = await Promise.all([getCityWiki(cityInfo.name), getISSData(), getWeather(cityInfo.name)])
+  // const [cityWiki, iss, weather] = await Promise.all([getCityWiki(cityInfo.name), getISSData(), getWeather(cityInfo.name)])
   
   // just get ISS and weather
   // const [iss, weather] = await Promise.all([getISSData(), getWeather(cityInfo.name)])
@@ -30,7 +32,7 @@ export default async function ExperiencePage({
   // const [iss] = await Promise.all([getISSData()])
 
   // get the city data
-  const cityData: CityData = cityWiki ?? {
+  const cityData: CityData = {
     title: cityInfo.name,
     extract: `${cityInfo.name} – dynamic demo city.`,
     coordinates: { lat: cityInfo.lat, lon: cityInfo.lon }
@@ -45,15 +47,15 @@ export default async function ExperiencePage({
           </h1>
 
           {/* Wiki Card */}
-          <WikiCard cityData={cityData} />
-          {/* {cityInfo.name && <WikiCardSingle cityWiki={cityInfo.name} />} */}
+          {/* <WikiCard cityData={cityData} /> */}
+          {cityInfo.name && <WikiCardServer cityWiki={cityInfo.name} />}
 
           {/* Weather Section - Server Component */}
-          {/* {weather && <WeatherServer city={cityInfo.name} unit="C" />} */}
-          {weather && <WeatherClient weather={weather} />}
+          {cityInfo.name && <WeatherServer city={cityInfo.name} unit="C" />}
+          {/* {weather && <WeatherClient weather={weather} />} */}
 
           {/* ISS Card */}
-          <ISS city={cityData} iss={iss} />
+          {cityInfo.name && <ISSClient city={cityData} />}
           
         </main>
       </div>
