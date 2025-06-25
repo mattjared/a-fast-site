@@ -190,7 +190,7 @@ export function InteractiveAd() {
               }`}
             >
               <div className={`relative ${index === 0 ? "h-80 lg:h-full" : "h-48"}`}>
-                <img
+                <Image
                   src={image.src}
                   alt={image.alt}
                   width={image.width}
